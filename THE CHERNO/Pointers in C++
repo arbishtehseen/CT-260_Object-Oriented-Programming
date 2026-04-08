@@ -1,0 +1,32 @@
+#include<iostream>
+#include<string>
+#include<cstring>
+using namespace std;
+int main(){
+	
+	
+	// it is being created in stack memory.
+	
+	int var = 8; 
+	int* ptr = &var; 
+	*ptr = 10; // accessing the data          
+	
+	cout<<*ptr<<endl;
+	cout<<ptr<<endl;
+	
+	
+	// heap memory
+	char* buffer = new char[8]; 
+	
+	strcpy(buffer , "arbishh"); 
+	cout<<buffer<<endl;
+	
+	
+	char** pptr = &buffer; 
+	cout<<pptr<<endl;
+	cout<<*pptr<<endl;
+	
+	delete[] buffer;
+	
+	return 0; 
+}
