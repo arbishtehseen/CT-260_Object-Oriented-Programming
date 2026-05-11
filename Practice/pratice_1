@@ -1,0 +1,66 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class TaxAuthority;
+
+class Bank{
+	private:
+		string depositorname;
+		double balance;
+		
+	public:
+		Bank() : depositorname("N/A") , balance(0.0){}
+		Bank(string depositorname , double balance){
+			this->depositorname = depositorname;
+			this->balance = balance;
+		}
+		
+		string getDepositorName() const{
+			return depositorname;
+		}
+		double getBalance() const{
+			return balance;
+		}
+		
+		void setDepositorName(string name){
+			depositorname = name;
+		}
+	    
+	    void setBalance(double b){
+	    	balance = b; 
+		}
+	    
+	    friend class TaxAuthority;
+	
+};
+
+class TaxAuthority{
+	
+	public:
+		double computeTax(Bank &account){
+			double tax;
+			if(account.balance > 50000 && account.balance < 100000){
+				tax = account.balance*0.5;
+				
+			}
+			else if(account.balance > 100000){
+				tax = account.balance*0.10;
+				
+			}
+			else{
+				tax = 0.0;
+			}
+			return tax;
+		}
+};
+
+int main(){
+	Bank b("arbish" , 125000);
+	TaxAuthority t;
+	
+	double tax = t.computeTax(b);
+	cout<<tax<<endl;
+	
+	return 0;
+}
